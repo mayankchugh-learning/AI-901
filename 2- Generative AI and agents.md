@@ -2,7 +2,7 @@ Generative AI is a branch of AI that enables software applications to generate n
 
 Diagram: a user sends a prompt to an AI agent; the agent can call external tools or data sources (shown as blocks **A**, **B**, and **C**) and then returns a result to the user.
 
-![User, AI agent, and external tools A/B/C](./images/ai-agent-user-tools-diagram.png)
+![User, AI agent, and external tools A/B/C](assets/generative-ai-agent-user-tools-diagram.png)
 
 Users interact with generative AI language models through prompts - natural language statements of questions. The language model in a generative AI solution uses the prompt to initiate the generation of a meaningful response.
 
