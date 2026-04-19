@@ -2,7 +2,7 @@
 
 *Computer vision* is the area of artificial intelligence that deals with the analysis of visual input; such as photographs, videos, and live camera feeds. Computer vision is accomplished by using large numbers of images to train a model.
 
-![Diagram: many labeled example images feed into a model (gear), which outputs category tags for image classification.](assets/computer-vision-classification-diagram.png)
+![Diagram: many labeled example images feed into a model (gear), which outputs category tags for image classification.](../assets/computer-vision-classification-diagram.png)
 
 ## Types of computer vision models
 
@@ -28,4 +28,4 @@ Common uses of computer vision include:
 - Authentication through facial recognition.
 - Robotics and self-driving vehicles.
 
-![Computer vision topic overview (reference).](assets/computer-vision-overview.png)
+![Computer vision topic overview (reference).](../assets/computer-vision-overview.png)

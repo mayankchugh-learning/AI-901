@@ -4,7 +4,7 @@
 
 AI is commonly used to automate *information extraction* solutions that find information and unlock insights in unstructured data sources, such as scanned documents and forms, images, and audio or video recordings.
 
-![Northwind Traders receipt with light-blue OCR bounding boxes on text; arrow to an "Expense claim details" form with Vendor, Date, and Amount (from receipt Total) filled in.](assets/information-extraction-receipt-to-form.png)
+![Northwind Traders receipt with light-blue OCR bounding boxes on text; arrow to an "Expense claim details" form with Vendor, Date, and Amount (from receipt Total) filled in.](../assets/information-extraction-receipt-to-form.png)
 
 The basis for most document analysis solutions is a computer vision technology called *optical character recognition* (OCR), which can identify the location of text in an image. OCR is often combined with an analytical model that can *interpret* individual values in the document, and so extract specific fields.
 

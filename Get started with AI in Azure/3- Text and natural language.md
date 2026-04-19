@@ -8,7 +8,7 @@ While many natural language processing scenarios are handled by generative AI mo
 
 Unstructured text goes through NLP processing and can yield several kinds of output (for example sentiment, structured facts, or a shorter text).
 
-![Document text processed into sentiment, information extraction, and summarization](assets/nlp-text-processing.png)
+![Document text processed into sentiment, information extraction, and summarization](../assets/nlp-text-processing.png)
 
 ## Common NLP tasks
 
