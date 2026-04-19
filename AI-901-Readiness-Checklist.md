@@ -113,7 +113,7 @@ This domain is the larger share; spend proportionally more time here.
 | File | Purpose |
 |------|---------|
 | [AI-901-Exam-Prep.md](./AI-901-Exam-Prep.md) | Links, weights, strategy, official resources |
-| [1- IntroductionToAI.md](./Get%20started%20with%20AI%20in%20Azure/1-%20IntroductionToAI.md) | Intro module notes; units 2–7 in **Get started with AI in Azure** |
+| [1- IntroductionToAI.md](./1-%20Get%20started%20with%20AI%20in%20Azure/1-%20IntroductionToAI.md) | Intro module notes; units 2–7 in **1- Get started with AI in Azure** |
 
 ---
 
