@@ -3,6 +3,7 @@
 Speech capabilities in AI applications and agents enable users to interact with them through spoken language.
 
 ## Speech recognition
+![Spoken input is processed and converted into text (speech-to-text).](../assets/Speech1.png)
 
 Spoken input is processed and converted into text (speech-to-text).
 
@@ -16,7 +17,7 @@ flowchart LR
 Speech recognition is the ability of AI to "hear" and interpret speech. Usually this capability takes the form of *speech-to-text* (where the audio signal for the speech is transcribed into text).
 
 ## Speech synthesis
-
+![Text is processed and converted into audible speech (text-to-speech).](../assets/Speech2.png)
 Text is processed and converted into audible speech (text-to-speech).
 
 ```mermaid
