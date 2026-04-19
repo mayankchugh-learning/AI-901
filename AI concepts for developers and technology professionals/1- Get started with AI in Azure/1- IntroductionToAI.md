@@ -12,4 +12,4 @@ We recognize that different people like to learn in different ways. You can choo
 
 ---
 
-**Exam prep:** For AI-901 registration, objectives, links, and study strategy, see [AI-901-Exam-Prep.md](../AI-901-Exam-Prep.md). For a **task list and readiness checklist**, see [AI-901-Readiness-Checklist.md](../AI-901-Readiness-Checklist.md).
+**Exam prep:** For AI-901 registration, objectives, links, and study strategy, see [AI-901-Exam-Prep.md](../../AI-901-Exam-Prep.md). For a **task list and readiness checklist**, see [AI-901-Readiness-Checklist.md](../../AI-901-Readiness-Checklist.md).

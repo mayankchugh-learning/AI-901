@@ -84,7 +84,7 @@ These percentages appear on the exam page; use the **study guide** for the exact
 
 ## Related notes in this repo
 
-- **1- Get started with AI in Azure** (course units 1–7): see [1- IntroductionToAI.md](./1-%20Get%20started%20with%20AI%20in%20Azure/1-%20IntroductionToAI.md) and the companion notes in the same folder.
+- **1- Get started with AI in Azure** (course units 1–7): under **AI concepts for developers and technology professionals**, see [1- IntroductionToAI.md](./AI%20concepts%20for%20developers%20and%20technology%20professionals/1-%20Get%20started%20with%20AI%20in%20Azure/1-%20IntroductionToAI.md) and the companion notes in the same folder.
 - **Course & exam readiness:** task list and checkboxes — see [AI-901-Readiness-Checklist.md](./AI-901-Readiness-Checklist.md).
 
 ---
