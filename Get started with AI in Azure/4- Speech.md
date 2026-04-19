@@ -18,6 +18,7 @@ Speech recognition is the ability of AI to "hear" and interpret speech. Usually 
 
 ## Speech synthesis
 ![Text is processed and converted into audible speech (text-to-speech).](../assets/Speech2.png)
+
 Text is processed and converted into audible speech (text-to-speech).
 
 ```mermaid
