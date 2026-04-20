@@ -17,7 +17,7 @@ Azure provides four core categories of services:
 
 When a user gets started with Azure, their access needs to be organized and managed. Azure organizes access and management by tenants, subscriptions, resource groups, and resources.
 
-![Screenshot of diagram of Azure's organizational structure](2- Understand Azure-1-organizational-structure.png)
+![Screenshot of diagram of Azure's organizational structure](asset/2- Understand Azure-1-organizational-structure.png)
 
 An Azure tenant is an organization's home base and identity in Microsoft's cloud. Having a tenant is like having an apartment unit in a large building, where the building is Microsoft cloud. Each tenant is separate and secured from others; your organization has its own locks, rooms, and controls.
 
@@ -48,11 +48,11 @@ Azure portal, accessible at [https://portal.azure.com](https://portal.azure.com)
 - View billing, costs, and spending patterns
 - Access specialized services like Microsoft Foundry
 
-![Screenshot of the Azure portal experience](2- Understand Azure-2-portal-experience.png)
+![Screenshot of the Azure portal experience](asset/2- Understand Azure-2-portal-experience.png)
 
 You can create and manage individual resources in Azure portal. Each resource has information which is accessible through the **All resources** pane.
 
-![Screenshot of a resource in the Azure portal](2- Understand Azure-3-resource-in-portal.png)
+![Screenshot of a resource in the Azure portal](asset/2- Understand Azure-3-resource-in-portal.png)
 
 > **Note**  
 > You can also create Azure resources programmatically, which means using code or scripts instead of clicking through the Azure portal interface. This approach is useful when you want to repeat the same setup across environments, automate deployments, or reduce manual errors. For example, instead of going into the Azure portal to create a storage account, you could run a single command in the Azure CLI or use a script that creates it the same way every time. This makes your deployments faster, more reliable, and easier to maintain, especially for larger AI applications that require many resources.

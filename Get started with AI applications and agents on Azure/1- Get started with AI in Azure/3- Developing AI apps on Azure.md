@@ -6,7 +6,7 @@ The AI applications we use and trust today rely on robust security, networking, 
 
 ## Security and networking
 
-![Screenshot of video showing Azure security and networking icons](3- Developing AI apps on Azure-1-security-networking.png)
+![Screenshot of video showing Azure security and networking icons](asset/3- Developing AI apps on Azure-1-security-networking.png)
 
 The foundation of AI applications is security and networking. Azure is secure by design, offering built-in identity, access control, and network isolation to protect your AI solutions.
 
@@ -25,7 +25,7 @@ Azure's security tools cover identity, secret, and data protection, compliance, 
 
 ## Hosting and scaling
 
-![Screenshot of video showing Azure hosting icons](3- Developing AI apps on Azure-2-hosting-scaling.png)
+![Screenshot of video showing Azure hosting icons](asset/3- Developing AI apps on Azure-2-hosting-scaling.png)
 
 Applications run on computers or environments known as a host. In cloud contexts, a host can be a virtual machine (VM), providing the compute, memory, and networking your application needs to execute.
 
@@ -42,7 +42,7 @@ Cloud platforms like Azure make scaling automatic based on CPU usage, number of 
 
 ## Data storage
 
-![Screenshot of video showing Azure data icons](3- Developing AI apps on Azure-3-data-storage.png)
+![Screenshot of video showing Azure data icons](asset/3- Developing AI apps on Azure-3-data-storage.png)
 
 AI applications rely on multiple types of data, each serving a different purpose in the system.
 
@@ -62,7 +62,7 @@ Azure offers multiple options including Azure SQL Database for mission-critical 
 
 ## AI capabilities
 
-![Screenshot of video showing Foundry icons](3- Developing AI apps on Azure-4-ai-capabilities.png)
+![Screenshot of video showing Foundry icons](asset/3- Developing AI apps on Azure-4-ai-capabilities.png)
 
 Finally, to bring your AI agents to life, you can use Microsoft Foundry, an enterprise-grade platform for developing and operating AI agents securely on Azure.
 
