@@ -1,0 +1,555 @@
+{
+  "meta": {
+    "title": "AI-901 Practice",
+    "description": "Practice questions aligned with Azure AI Fundamentals (AI-901) study themes in this repo. Confirm objectives against the official study guide.",
+    "passingScoreHint": 700,
+    "scaleHint": 1000
+  },
+  "domains": [
+    {
+      "id": "concepts_responsibilities",
+      "label": "Domain 1: AI concepts & responsibilities",
+      "shortLabel": "Concepts & responsibility",
+      "weight": "40–45%"
+    },
+    {
+      "id": "foundry_implementation",
+      "label": "Domain 2: Implement with Microsoft Foundry",
+      "shortLabel": "Foundry & implementation",
+      "weight": "55–60%"
+    },
+    {
+      "id": "workloads",
+      "label": "Cross-cutting: NLP, vision, speech, generative AI",
+      "shortLabel": "Workloads & patterns",
+      "weight": "Across domains"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q001",
+      "domain": "workloads",
+      "topic": "Generative AI",
+      "question": "Which is the most accurate description of generative AI?",
+      "options": [
+        "Generative AI uses a language model to create original content in response to a prompt.",
+        "Generative AI is an older form of AI that has been superseded by machine learning.",
+        "Generative AI is so complex that only specialists such as data scientists can use it."
+      ],
+      "correctIndex": 0,
+      "explanation": "Generative AI produces new content (text, images, code, etc.) from prompts, often using large language or multimodal models."
+    },
+    {
+      "id": "q002",
+      "domain": "workloads",
+      "topic": "AI agents",
+      "question": "What is an AI agent in the context of Microsoft Learn-style definitions?",
+      "options": [
+        "A technology professional who builds AI applications.",
+        "Anyone who uses AI applications.",
+        "An AI application that can perform tasks on behalf of a user."
+      ],
+      "correctIndex": 2,
+      "explanation": "An agent acts on behalf of the user to complete tasks, often with tools and orchestration—not merely a human role title."
+    },
+    {
+      "id": "q003",
+      "domain": "workloads",
+      "topic": "Speech",
+      "question": "An AI application reads email aloud to a user. Which AI speech capability is being used?",
+      "options": ["Speech recognition", "Speech synthesis", "Sentiment analysis"],
+      "correctIndex": 1,
+      "explanation": "Text-to-speech (speech synthesis) converts written text into spoken audio. Speech recognition is speech-to-text."
+    },
+    {
+      "id": "q004",
+      "domain": "workloads",
+      "topic": "NLP — tokenization",
+      "question": "What is the purpose of tokenization in NLP?",
+      "options": [
+        "To translate text into another language.",
+        "To summarize large documents.",
+        "To break down text into smaller units for analysis."
+      ],
+      "correctIndex": 2,
+      "explanation": "Tokenization splits text into tokens (words, subwords, or characters) so models can process them."
+    },
+    {
+      "id": "q005",
+      "domain": "workloads",
+      "topic": "TF-IDF",
+      "question": "Which technique helps determine how important a word is in a specific document within a larger collection?",
+      "options": ["Naïve Bayes", "TF-IDF (Term Frequency–Inverse Document Frequency)", "K-means clustering"],
+      "correctIndex": 1,
+      "explanation": "TF-IDF balances term frequency in a document with how common the term is across all documents."
+    },
+    {
+      "id": "q006",
+      "domain": "workloads",
+      "topic": "Embeddings",
+      "question": "Which best describes the role of embedding vectors in NLP?",
+      "options": [
+        "They duplicate tokens in multiple languages.",
+        "They define stopwords that should be ignored.",
+        "They capture semantic relationships between tokens in a high-dimensional space."
+      ],
+      "correctIndex": 2,
+      "explanation": "Embeddings map tokens to vectors so semantically similar words are closer in vector space."
+    },
+    {
+      "id": "q007",
+      "domain": "workloads",
+      "topic": "LLMs",
+      "question": "What is a large language model (LLM)?",
+      "options": [
+        "A type of AI model designed to generate human-like text.",
+        "A model that only processes images, not text.",
+        "A small, efficient model used only on mobile devices."
+      ],
+      "correctIndex": 0,
+      "explanation": "LLMs are trained on large text corpora and are used for generation, completion, classification, and more."
+    },
+    {
+      "id": "q008",
+      "domain": "workloads",
+      "topic": "Transformers",
+      "question": "What does an attention layer do in a transformer model?",
+      "options": [
+        "Removes irrelevant words from the input text.",
+        "Examines relationships between each token and other tokens in the sequence.",
+        "Flags inappropriate content in generated text."
+      ],
+      "correctIndex": 1,
+      "explanation": "Self-attention lets the model weigh how each token relates to others when producing representations."
+    },
+    {
+      "id": "q009",
+      "domain": "workloads",
+      "topic": "Prompting",
+      "question": "What is the purpose of a system prompt?",
+      "options": [
+        "To provide context and instructions to the AI model.",
+        "To configure a model to run on a particular operating system.",
+        "To store user preferences for future interactions only."
+      ],
+      "correctIndex": 0,
+      "explanation": "System prompts set behavior, scope, and safety instructions separate from end-user messages."
+    },
+    {
+      "id": "q010",
+      "domain": "workloads",
+      "topic": "Embeddings (generative module)",
+      "question": "What are embeddings in generative AI contexts?",
+      "options": [
+        "Extra words added by a transformer to enhance generation.",
+        "Small language models for niche tasks only.",
+        "Vector-based representations of tokens that capture semantic meaning."
+      ],
+      "correctIndex": 2,
+      "explanation": "Embeddings represent meaning numerically; they underpin retrieval, similarity, and many NLP pipelines."
+    },
+    {
+      "id": "q011",
+      "domain": "concepts_responsibilities",
+      "topic": "Responsible AI — Fairness",
+      "question": "A hiring model disadvantages applicants from certain regions because training data underrepresented them. Which Responsible AI principle is most directly violated?",
+      "options": ["Transparency", "Fairness", "Accountability"],
+      "correctIndex": 1,
+      "explanation": "Fairness addresses bias and discriminatory outcomes; mitigation includes better data and fairness testing."
+    },
+    {
+      "id": "q012",
+      "domain": "concepts_responsibilities",
+      "topic": "Responsible AI — Reliability",
+      "question": "A warehouse robot uses computer vision and should avoid grasping when uncertain. Using probability or confidence scores before acting primarily supports which principle?",
+      "options": ["Inclusiveness", "Reliability and safety", "Privacy and security"],
+      "correctIndex": 1,
+      "explanation": "Probabilistic models can be wrong; systems should mitigate harm with thresholds, fallbacks, and monitoring."
+    },
+    {
+      "id": "q013",
+      "domain": "concepts_responsibilities",
+      "topic": "Responsible AI — Privacy",
+      "question": "Temporary facial images at an access gate should be deleted when no longer needed. This practice aligns most closely with:",
+      "options": [
+        "Transparency",
+        "Privacy and security",
+        "Reliability and safety only, with no privacy angle"
+      ],
+      "correctIndex": 1,
+      "explanation": "Minimizing retention of sensitive data supports privacy and security responsibilities."
+    },
+    {
+      "id": "q014",
+      "domain": "concepts_responsibilities",
+      "topic": "Responsible AI — Inclusiveness",
+      "question": "A voice assistant provides spoken responses but no captions. Users who are Deaf or hard of hearing cannot use it effectively. Adding captions best demonstrates:",
+      "options": ["Accountability", "Inclusiveness", "Fairness only, with no overlap"],
+      "correctIndex": 1,
+      "explanation": "Inclusiveness means designing so diverse users can succeed; multimodal output can remove barriers."
+    },
+    {
+      "id": "q015",
+      "domain": "concepts_responsibilities",
+      "topic": "Responsible AI — Transparency",
+      "question": "A bank uses AI for loan decisions and explains to customers that AI is used and what kinds of factors inform the model (without leaking secrets). This supports:",
+      "options": ["Transparency", "Tokenization", "TF-IDF"],
+      "correctIndex": 0,
+      "explanation": "Transparency helps users understand automation, limitations, and how to contest or clarify outcomes."
+    },
+    {
+      "id": "q016",
+      "domain": "concepts_responsibilities",
+      "topic": "Responsible AI — Accountability",
+      "question": "An organization documents governance, roles, and review processes for its AI systems. This primarily reflects:",
+      "options": ["Fairness", "Accountability", "Speech synthesis"],
+      "correctIndex": 1,
+      "explanation": "Accountability ensures humans and organizations own outcomes and have governance in place."
+    },
+    {
+      "id": "q017",
+      "domain": "concepts_responsibilities",
+      "topic": "AI workloads",
+      "question": "You need to detect manufacturing defects from camera images on an assembly line. Which workload category fits best?",
+      "options": ["Natural language processing", "Computer vision", "Speech synthesis"],
+      "correctIndex": 1,
+      "explanation": "Image-based inspection is a classic computer vision scenario."
+    },
+    {
+      "id": "q018",
+      "domain": "concepts_responsibilities",
+      "topic": "AI workloads",
+      "question": "You want to route customer emails to departments by intent (billing vs. technical). Which workload fits best?",
+      "options": ["Computer vision", "Natural language processing", "Robotics kinematics"],
+      "correctIndex": 1,
+      "explanation": "Text classification and understanding are core NLP tasks."
+    },
+    {
+      "id": "q019",
+      "domain": "concepts_responsibilities",
+      "topic": "Exam strategy",
+      "question": "The AI-901 exam emphasizes conceptual knowledge. Which study habit matches scenario-style questions best?",
+      "options": [
+        "Memorize product names only.",
+        "For each service, know when it fits a problem—not only its definition.",
+        "Skip Responsible AI because it rarely appears."
+      ],
+      "correctIndex": 1,
+      "explanation": "Microsoft’s guidance stresses scenario thinking: matching tools and principles to realistic situations."
+    },
+    {
+      "id": "q020",
+      "domain": "concepts_responsibilities",
+      "topic": "Cloud concepts",
+      "question": "In a cloud context, an application that calls a managed AI service over HTTPS is primarily consuming:",
+      "options": [
+        "On-premises tape backup",
+        "A service endpoint exposed by the cloud provider",
+        "A local-only SQLite file with no network"
+      ],
+      "correctIndex": 1,
+      "explanation": "Clients use endpoints (URLs), authentication, and request/response patterns to consume cloud AI services."
+    },
+    {
+      "id": "q021",
+      "domain": "foundry_implementation",
+      "topic": "Microsoft Foundry (conceptual)",
+      "question": "In Microsoft’s learning path for AI-901, solutions often center on Microsoft Foundry for building and using AI. At a fundamentals level, Foundry helps teams:",
+      "options": [
+        "Replace all databases with spreadsheets.",
+        "Develop and deploy AI applications and models in a governed workspace.",
+        "Eliminate the need for authentication in APIs."
+      ],
+      "correctIndex": 1,
+      "explanation": "Foundry provides a platform for AI development, deployment, and tooling—confirm current names and features in Microsoft Learn."
+    },
+    {
+      "id": "q022",
+      "domain": "foundry_implementation",
+      "topic": "Model consumption",
+      "question": "A client application needs to send prompts to a deployed language model. Which pair is most characteristic of production-style access patterns?",
+      "options": [
+        "FTP and Telnet",
+        "REST/HTTPS API calls with authentication (for example keys or tokens) to an endpoint",
+        "USB bulk transfer only"
+      ],
+      "correctIndex": 1,
+      "explanation": "Apps typically call secured HTTP APIs; exact auth mechanisms depend on the service and configuration."
+    },
+    {
+      "id": "q023",
+      "domain": "foundry_implementation",
+      "topic": "Configuration",
+      "question": "Storing API keys in public source code repositories is problematic because:",
+      "options": [
+        "It improves transparency for competitors.",
+        "It can expose secrets and allow unauthorized use of your resources.",
+        "It is required by Responsible AI."
+      ],
+      "correctIndex": 1,
+      "explanation": "Secrets belong in secure configuration (vaults, environment variables, managed identity patterns)—not public repos."
+    },
+    {
+      "id": "q024",
+      "domain": "foundry_implementation",
+      "topic": "Agents",
+      "question": "A single-agent solution in Foundry-style scenarios typically refers to:",
+      "options": [
+        "Exactly one human reviewer worldwide.",
+        "An AI agent orchestration pattern with one primary agent (versus complex multi-agent topologies).",
+        "A deployment with no models."
+      ],
+      "correctIndex": 1,
+      "explanation": "AI-901 skills reference single-agent solutions; study how Learn describes agents and orchestration in Foundry."
+    },
+    {
+      "id": "q025",
+      "domain": "foundry_implementation",
+      "topic": "Client structure",
+      "question": "Which architecture sketch best matches “client app → AI platform → model → response”?",
+      "options": [
+        "User interface or backend sends requests to the AI service; the service returns model output to the app.",
+        "The model runs only inside the user’s browser cache with no server.",
+        "Training data is uploaded on every end-user keystroke without batching."
+      ],
+      "correctIndex": 0,
+      "explanation": "Fundamentals exams expect you to trace request flow from app to service to model output."
+    },
+    {
+      "id": "q026",
+      "domain": "foundry_implementation",
+      "topic": "Python literacy",
+      "question": "When reading a Python sample that calls an AI client SDK, you should be able to recognize that the client object usually:",
+      "options": [
+        "Replaces the need for any authentication.",
+        "Encapsulates configuration and methods used to send requests to the service.",
+        "Only works with Java applications."
+      ],
+      "correctIndex": 1,
+      "explanation": "AI-901 expects you to follow client setup, method calls, and response handling at a reading-comprehension level."
+    },
+    {
+      "id": "q027",
+      "domain": "foundry_implementation",
+      "topic": "Models",
+      "question": "Choosing a model for a task (chat completion vs. embeddings vs. vision) is primarily about:",
+      "options": [
+        "Matching model capabilities to the input modality and desired output.",
+        "Always picking the largest model regardless of task.",
+        "Avoiding all Azure services."
+      ],
+      "correctIndex": 0,
+      "explanation": "Different models support different modalities and tasks; selection should fit the scenario."
+    },
+    {
+      "id": "q028",
+      "domain": "workloads",
+      "topic": "Speech recognition",
+      "question": "Speech recognition (speech-to-text) converts:",
+      "options": ["Written text into audio", "Spoken language into written text", "Images into 3D models"],
+      "correctIndex": 1,
+      "explanation": "Recognition is speech→text; synthesis is text→speech."
+    },
+    {
+      "id": "q029",
+      "domain": "workloads",
+      "topic": "Speech synthesis",
+      "question": "Text normalization in text-to-speech might convert “Dr.” to “Doctor” so the system:",
+      "options": [
+        "Uses more disk space",
+        "Pronounces abbreviations naturally instead of saying individual letters",
+        "Skips audio generation"
+      ],
+      "correctIndex": 1,
+      "explanation": "Normalization expands abbreviations, numbers, and symbols into speakable forms."
+    },
+    {
+      "id": "q030",
+      "domain": "workloads",
+      "topic": "Computer vision",
+      "question": "Object detection differs from image classification because detection typically:",
+      "options": [
+        "Only outputs a single label for the entire image.",
+        "Locates objects (for example with bounding boxes) and may identify multiple objects.",
+        "Translates text in the image to speech only."
+      ],
+      "correctIndex": 1,
+      "explanation": "Detection finds where objects are and what they are; classification assigns one label to the whole image."
+    },
+    {
+      "id": "q031",
+      "domain": "concepts_responsibilities",
+      "topic": "Governance",
+      "question": "Human oversight for high-risk AI decisions (for example credit or health) is important because:",
+      "options": [
+        "Models are probabilistic and can be wrong or biased.",
+        "Models are always 100% accurate.",
+        "Regulations never apply to AI."
+      ],
+      "correctIndex": 0,
+      "explanation": "Responsible deployment often combines automation with review, escalation, and monitoring."
+    },
+    {
+      "id": "q032",
+      "domain": "foundry_implementation",
+      "topic": "Deployment concept",
+      "question": "At a high level, deploying a model makes it:",
+      "options": [
+        "Available for applications to invoke through the platform’s interfaces.",
+        "Permanently impossible to update.",
+        "Only usable without any metrics or logging."
+      ],
+      "correctIndex": 0,
+      "explanation": "Deployment exposes the model for inference behind endpoints and governance controls."
+    },
+    {
+      "id": "q033",
+      "domain": "workloads",
+      "topic": "Information extraction",
+      "question": "Extracting entities (names, dates, amounts) from unstructured documents is primarily:",
+      "options": ["A pure audio task", "An NLP / language understanding task", "A GPU cooling task"],
+      "correctIndex": 1,
+      "explanation": "Entity extraction is a text understanding problem, often using NLP models."
+    },
+    {
+      "id": "q034",
+      "domain": "concepts_responsibilities",
+      "topic": "Transparency vs privacy",
+      "question": "Explaining model behavior to users is encouraged, but sharing raw sensitive training records publicly would violate:",
+      "options": ["Transparency", "Privacy and security", "Inclusiveness"],
+      "correctIndex": 1,
+      "explanation": "Transparency does not require exposing private data; protect data while explaining at an appropriate level."
+    },
+    {
+      "id": "q035",
+      "domain": "foundry_implementation",
+      "topic": "Observability",
+      "question": "Monitoring latency, errors, and usage for an AI endpoint helps teams:",
+      "options": [
+        "Detect issues and improve reliability",
+        "Guarantee the model never updates",
+        "Remove all authentication"
+      ],
+      "correctIndex": 0,
+      "explanation": "Operational monitoring supports reliability and safety in production scenarios."
+    },
+    {
+      "id": "q036",
+      "domain": "workloads",
+      "topic": "Prompt engineering",
+      "question": "Clear instructions, examples (few-shot), and specifying output format in a prompt mainly improve:",
+      "options": [
+        "Predictability and usefulness of model outputs",
+        "Physical robot torque",
+        "Database normalization theory"
+      ],
+      "correctIndex": 0,
+      "explanation": "Prompt design steers the model toward the desired behavior and format."
+    },
+    {
+      "id": "q037",
+      "domain": "concepts_responsibilities",
+      "topic": "Bias",
+      "question": "Testing AI systems for fairness across demographic groups is a response to risk that:",
+      "options": [
+        "Training data and design choices can encode bias.",
+        "Cloud regions do not exist.",
+        "HTTPS is optional everywhere."
+      ],
+      "correctIndex": 0,
+      "explanation": "Bias can enter through data, labels, and deployment context; testing and mitigation are key."
+    },
+    {
+      "id": "q038",
+      "domain": "foundry_implementation",
+      "topic": "Identity (conceptual)",
+      "question": "Conceptually, why do applications use authentication when calling cloud AI APIs?",
+      "options": [
+        "To identify and authorize the caller and protect resources",
+        "To disable encryption",
+        "To prevent logging"
+      ],
+      "correctIndex": 0,
+      "explanation": "APIs use keys, tokens, or managed identities so only permitted clients access paid or sensitive capabilities."
+    },
+    {
+      "id": "q039",
+      "domain": "workloads",
+      "topic": "Generative vs discriminative (high level)",
+      "question": "A model that generates a summary of a support ticket is an example of:",
+      "options": [
+        "Generative AI usage (creating new text)",
+        "Only hardware thermal management",
+        "Only rotating images by 90°"
+      ],
+      "correctIndex": 0,
+      "explanation": "Summarization produces new text conditioned on input; it is a common generative NLP task."
+    },
+    {
+      "id": "q040",
+      "domain": "concepts_responsibilities",
+      "topic": "Reliability",
+      "question": "Showing confidence scores or “I’m not sure” behavior for low-confidence predictions supports:",
+      "options": ["Reliability and safety", "Irrelevant marketing", "Deleting all logs"],
+      "correctIndex": 0,
+      "explanation": "Calibrated uncertainty and safe fallbacks reduce harmful automated actions."
+    },
+    {
+      "id": "q041",
+      "domain": "foundry_implementation",
+      "topic": "Solution design",
+      "question": "Placing API keys in environment variables or a secure vault instead of hardcoding aligns with:",
+      "options": ["Privacy and security practices for secrets", "Avoiding all documentation", "Disabling HTTPS"],
+      "correctIndex": 0,
+      "explanation": "Secret management protects against leakage and abuse."
+    },
+    {
+      "id": "q042",
+      "domain": "workloads",
+      "topic": "Speech features",
+      "question": "MFCCs are commonly used in speech recognition to:",
+      "options": [
+        "Represent spectral features of audio frames in a compact form",
+        "Encrypt audio files",
+        "Replace the need for a microphone"
+      ],
+      "correctIndex": 0,
+      "explanation": "MFCCs capture perceptually relevant spectral information from framed audio."
+    },
+    {
+      "id": "q043",
+      "domain": "concepts_responsibilities",
+      "topic": "Accountability",
+      "question": "Documenting who owns model updates, incident response, and compliance reviews is part of:",
+      "options": ["Governance and accountability", "Tokenization", "Sampling rate selection"],
+      "correctIndex": 0,
+      "explanation": "Clear ownership and processes support accountable AI operations."
+    },
+    {
+      "id": "q044",
+      "domain": "foundry_implementation",
+      "topic": "End-to-end flow",
+      "question": "In a typical app flow, the sequence “authenticate → send prompt → receive completion → render to user” emphasizes:",
+      "options": [
+        "Secure, structured consumption of AI services",
+        "Storing model weights in the browser only",
+        "Running training on every click with no batching"
+      ],
+      "correctIndex": 0,
+      "explanation": "Production patterns combine auth, inference calls, and UI handling."
+    },
+    {
+      "id": "q045",
+      "domain": "workloads",
+      "topic": "Multimodal intuition",
+      "question": "A scenario needs both image understanding and text generation (describe a photo). This suggests:",
+      "options": [
+        "A multimodal or vision-language style capability",
+        "Only a relational database index",
+        "Only TF-IDF without models"
+      ],
+      "correctIndex": 0,
+      "explanation": "Cross-modal tasks combine vision encoders with language decoders or multimodal models."
+    }
+  ]
+}

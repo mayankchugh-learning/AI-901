@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI-901 Q&amp;A Simulator</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="app-header-inner">
+        <h1 class="app-title">AI-901 Q&amp;A Simulator</h1>
+        <p class="app-sub">
+          Practice for Microsoft Azure AI Fundamentals — questions derived from your repo notes and exam-style scenarios. Always verify skills against the
+          <a href="https://aka.ms/AI901-StudyGuide" target="_blank" rel="noopener">official study guide</a>.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section id="screen-start" class="panel">
+        <h2>Start a session</h2>
+        <p id="domain-badges" class="quiz-meta" aria-live="polite"></p>
+        <div class="field-grid two">
+          <div>
+            <label for="domain-filter">Domain</label>
+            <select id="domain-filter" aria-label="Filter by exam domain">
+              <option value="all">All topics (mixed)</option>
+              <option value="concepts_responsibilities">Domain 1 — Concepts &amp; responsibilities</option>
+              <option value="foundry_implementation">Domain 2 — Foundry &amp; implementation</option>
+              <option value="workloads">Cross-cutting — NLP, vision, speech, generative AI</option>
+            </select>
+          </div>
+          <div>
+            <label for="question-count">Number of questions</label>
+            <input type="number" id="question-count" min="1" max="45" value="20" />
+          </div>
+        </div>
+        <div class="field-grid" style="margin-top: 1rem">
+          <fieldset style="margin: 0; padding: 0; border: none">
+            <legend class="visually-hidden" style="position: absolute; width: 1px; height: 1px; overflow: hidden">Mode</legend>
+            <label>Mode</label>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.35rem">
+              <label class="checkbox-row">
+                <input type="radio" name="mode" id="mode-study" checked />
+                Study — immediate feedback &amp; explanations
+              </label>
+              <label class="checkbox-row">
+                <input type="radio" name="mode" id="mode-exam" />
+                Exam — no explanations until the end; optional timer
+              </label>
+            </div>
+          </fieldset>
+          <div>
+            <label for="exam-minutes">Exam timer (minutes)</label>
+            <input type="number" id="exam-minutes" min="5" max="120" value="45" disabled />
+          </div>
+        </div>
+        <div class="btn-row">
+          <button type="button" class="btn-primary" id="btn-start">Start</button>
+        </div>
+        <p id="cumulative-stats" class="disclaimer" style="margin-top: 1rem; border: none; padding: 0"></p>
+        <p class="disclaimer">
+          Open this folder with a local web server so <code>fetch</code> can load <code>data/questions.json</code> (browsers block file URLs). Example:
+          <code>cd qa-simulator</code> then <code>npx --yes serve -p 5500</code> and visit <code>http://localhost:5500</code>.
+        </p>
+      </section>
+
+      <section id="screen-quiz" class="panel hidden">
+        <div class="quiz-meta">
+          <span id="q-counter">Question</span>
+          <span id="q-topic" class="badge"></span>
+          <span id="timer-wrap" class="hidden">Time left: <span id="timer" class="timer">0:00</span></span>
+        </div>
+        <div class="progress-bar" aria-hidden="true">
+          <div id="progress-fill" class="progress-bar-fill" style="width: 0%"></div>
+        </div>
+        <p id="q-text" class="question-text"></p>
+        <div id="options" class="options"></div>
+        <div id="feedback" class="feedback hidden"></div>
+        <div class="btn-row">
+          <button type="button" class="btn-secondary" id="btn-prev">Previous</button>
+          <button type="button" class="btn-primary hidden" id="btn-next">Next</button>
+        </div>
+      </section>
+
+      <section id="screen-results" class="panel hidden">
+        <div class="results-summary">
+          <p id="results-timed" class="hidden" style="color: var(--warn)">Time ran out — unanswered items count as incorrect.</p>
+          <p style="margin: 0; color: var(--muted); font-size: 0.9rem">Approximate practice score (not official)</p>
+          <p id="results-score" class="results-score">0<span> / 1000</span></p>
+        </div>
+        <div id="results-detail"></div>
+        <div class="btn-row" style="justify-content: center">
+          <button type="button" class="btn-primary" id="btn-restart" onclick="location.reload()">New session</button>
+        </div>
+        <p id="cumulative-stats-end" class="disclaimer"></p>
+      </section>
+    </main>
+
+    <p class="footer-note">AI-901 Prep · Q&amp;A Simulator</p>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
