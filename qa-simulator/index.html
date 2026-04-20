@@ -21,19 +21,24 @@
       <section id="screen-start" class="panel">
         <h2>Start a session</h2>
         <p id="domain-badges" class="quiz-meta" aria-live="polite"></p>
-        <div class="field-grid two">
+        <div class="field-grid three">
           <div>
-            <label for="domain-filter">Domain</label>
+            <label for="domain-filter">Exam domain</label>
             <select id="domain-filter" aria-label="Filter by exam domain">
-              <option value="all">All topics (mixed)</option>
+              <option value="all">All domains (mixed)</option>
               <option value="concepts_responsibilities">Domain 1 — Concepts &amp; responsibilities</option>
               <option value="foundry_implementation">Domain 2 — Foundry &amp; implementation</option>
               <option value="workloads">Cross-cutting — NLP, vision, speech, generative AI</option>
             </select>
           </div>
           <div>
+            <label for="topic-filter">Topic area</label>
+            <select id="topic-filter" aria-label="Filter by topic area"></select>
+          </div>
+          <div>
             <label for="question-count">Number of questions</label>
-            <input type="number" id="question-count" min="1" max="45" value="20" />
+            <input type="number" id="question-count" min="1" max="99" value="20" />
+            <p class="field-hint"><span id="filter-count">0</span> items match domain + topic filters.</p>
           </div>
         </div>
         <div class="field-grid" style="margin-top: 1rem">
@@ -59,6 +64,12 @@
         <div class="btn-row">
           <button type="button" class="btn-primary" id="btn-start">Start</button>
         </div>
+        <section class="progress-panel panel-nested" aria-labelledby="progress-heading">
+          <h2 id="progress-heading" class="h2-nested">Progress &amp; improvement</h2>
+          <p class="progress-intro">Scores are stored in this browser only. Compare each session to the one before; topic accuracy aggregates everything you have answered in each area.</p>
+          <div id="progress-panel"></div>
+          <button type="button" class="btn-secondary btn-small" id="btn-clear-history">Clear saved history</button>
+        </section>
         <p id="cumulative-stats" class="disclaimer" style="margin-top: 1rem; border: none; padding: 0"></p>
         <p class="disclaimer">
           Open this folder with a local web server so <code>fetch</code> can load <code>data/questions.json</code> (browsers block file URLs). Example:

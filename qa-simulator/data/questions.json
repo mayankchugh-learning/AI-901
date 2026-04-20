@@ -37,7 +37,8 @@
         "Generative AI is so complex that only specialists such as data scientists can use it."
       ],
       "correctIndex": 0,
-      "explanation": "Generative AI produces new content (text, images, code, etc.) from prompts, often using large language or multimodal models."
+      "explanation": "Generative AI produces new content (text, images, code, etc.) from prompts, often using large language or multimodal models.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q002",
@@ -50,16 +51,22 @@
         "An AI application that can perform tasks on behalf of a user."
       ],
       "correctIndex": 2,
-      "explanation": "An agent acts on behalf of the user to complete tasks, often with tools and orchestration—not merely a human role title."
+      "explanation": "An agent acts on behalf of the user to complete tasks, often with tools and orchestration—not merely a human role title.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q003",
       "domain": "workloads",
       "topic": "Speech",
       "question": "An AI application reads email aloud to a user. Which AI speech capability is being used?",
-      "options": ["Speech recognition", "Speech synthesis", "Sentiment analysis"],
+      "options": [
+        "Speech recognition",
+        "Speech synthesis",
+        "Sentiment analysis"
+      ],
       "correctIndex": 1,
-      "explanation": "Text-to-speech (speech synthesis) converts written text into spoken audio. Speech recognition is speech-to-text."
+      "explanation": "Text-to-speech (speech synthesis) converts written text into spoken audio. Speech recognition is speech-to-text.",
+      "topicKey": "speech"
     },
     {
       "id": "q004",
@@ -72,16 +79,22 @@
         "To break down text into smaller units for analysis."
       ],
       "correctIndex": 2,
-      "explanation": "Tokenization splits text into tokens (words, subwords, or characters) so models can process them."
+      "explanation": "Tokenization splits text into tokens (words, subwords, or characters) so models can process them.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q005",
       "domain": "workloads",
       "topic": "TF-IDF",
       "question": "Which technique helps determine how important a word is in a specific document within a larger collection?",
-      "options": ["Naïve Bayes", "TF-IDF (Term Frequency–Inverse Document Frequency)", "K-means clustering"],
+      "options": [
+        "Naïve Bayes",
+        "TF-IDF (Term Frequency–Inverse Document Frequency)",
+        "K-means clustering"
+      ],
       "correctIndex": 1,
-      "explanation": "TF-IDF balances term frequency in a document with how common the term is across all documents."
+      "explanation": "TF-IDF balances term frequency in a document with how common the term is across all documents.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q006",
@@ -94,7 +107,8 @@
         "They capture semantic relationships between tokens in a high-dimensional space."
       ],
       "correctIndex": 2,
-      "explanation": "Embeddings map tokens to vectors so semantically similar words are closer in vector space."
+      "explanation": "Embeddings map tokens to vectors so semantically similar words are closer in vector space.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q007",
@@ -107,7 +121,8 @@
         "A small, efficient model used only on mobile devices."
       ],
       "correctIndex": 0,
-      "explanation": "LLMs are trained on large text corpora and are used for generation, completion, classification, and more."
+      "explanation": "LLMs are trained on large text corpora and are used for generation, completion, classification, and more.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q008",
@@ -120,7 +135,8 @@
         "Flags inappropriate content in generated text."
       ],
       "correctIndex": 1,
-      "explanation": "Self-attention lets the model weigh how each token relates to others when producing representations."
+      "explanation": "Self-attention lets the model weigh how each token relates to others when producing representations.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q009",
@@ -133,7 +149,8 @@
         "To store user preferences for future interactions only."
       ],
       "correctIndex": 0,
-      "explanation": "System prompts set behavior, scope, and safety instructions separate from end-user messages."
+      "explanation": "System prompts set behavior, scope, and safety instructions separate from end-user messages.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q010",
@@ -146,25 +163,36 @@
         "Vector-based representations of tokens that capture semantic meaning."
       ],
       "correctIndex": 2,
-      "explanation": "Embeddings represent meaning numerically; they underpin retrieval, similarity, and many NLP pipelines."
+      "explanation": "Embeddings represent meaning numerically; they underpin retrieval, similarity, and many NLP pipelines.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q011",
       "domain": "concepts_responsibilities",
       "topic": "Responsible AI — Fairness",
       "question": "A hiring model disadvantages applicants from certain regions because training data underrepresented them. Which Responsible AI principle is most directly violated?",
-      "options": ["Transparency", "Fairness", "Accountability"],
+      "options": [
+        "Transparency",
+        "Fairness",
+        "Accountability"
+      ],
       "correctIndex": 1,
-      "explanation": "Fairness addresses bias and discriminatory outcomes; mitigation includes better data and fairness testing."
+      "explanation": "Fairness addresses bias and discriminatory outcomes; mitigation includes better data and fairness testing.",
+      "topicKey": "responsible_ai"
     },
     {
       "id": "q012",
       "domain": "concepts_responsibilities",
       "topic": "Responsible AI — Reliability",
       "question": "A warehouse robot uses computer vision and should avoid grasping when uncertain. Using probability or confidence scores before acting primarily supports which principle?",
-      "options": ["Inclusiveness", "Reliability and safety", "Privacy and security"],
+      "options": [
+        "Inclusiveness",
+        "Reliability and safety",
+        "Privacy and security"
+      ],
       "correctIndex": 1,
-      "explanation": "Probabilistic models can be wrong; systems should mitigate harm with thresholds, fallbacks, and monitoring."
+      "explanation": "Probabilistic models can be wrong; systems should mitigate harm with thresholds, fallbacks, and monitoring.",
+      "topicKey": "responsible_ai"
     },
     {
       "id": "q013",
@@ -177,52 +205,78 @@
         "Reliability and safety only, with no privacy angle"
       ],
       "correctIndex": 1,
-      "explanation": "Minimizing retention of sensitive data supports privacy and security responsibilities."
+      "explanation": "Minimizing retention of sensitive data supports privacy and security responsibilities.",
+      "topicKey": "responsible_ai"
     },
     {
       "id": "q014",
       "domain": "concepts_responsibilities",
       "topic": "Responsible AI — Inclusiveness",
       "question": "A voice assistant provides spoken responses but no captions. Users who are Deaf or hard of hearing cannot use it effectively. Adding captions best demonstrates:",
-      "options": ["Accountability", "Inclusiveness", "Fairness only, with no overlap"],
+      "options": [
+        "Accountability",
+        "Inclusiveness",
+        "Fairness only, with no overlap"
+      ],
       "correctIndex": 1,
-      "explanation": "Inclusiveness means designing so diverse users can succeed; multimodal output can remove barriers."
+      "explanation": "Inclusiveness means designing so diverse users can succeed; multimodal output can remove barriers.",
+      "topicKey": "responsible_ai"
     },
     {
       "id": "q015",
       "domain": "concepts_responsibilities",
       "topic": "Responsible AI — Transparency",
       "question": "A bank uses AI for loan decisions and explains to customers that AI is used and what kinds of factors inform the model (without leaking secrets). This supports:",
-      "options": ["Transparency", "Tokenization", "TF-IDF"],
+      "options": [
+        "Transparency",
+        "Tokenization",
+        "TF-IDF"
+      ],
       "correctIndex": 0,
-      "explanation": "Transparency helps users understand automation, limitations, and how to contest or clarify outcomes."
+      "explanation": "Transparency helps users understand automation, limitations, and how to contest or clarify outcomes.",
+      "topicKey": "responsible_ai"
     },
     {
       "id": "q016",
       "domain": "concepts_responsibilities",
       "topic": "Responsible AI — Accountability",
       "question": "An organization documents governance, roles, and review processes for its AI systems. This primarily reflects:",
-      "options": ["Fairness", "Accountability", "Speech synthesis"],
+      "options": [
+        "Fairness",
+        "Accountability",
+        "Speech synthesis"
+      ],
       "correctIndex": 1,
-      "explanation": "Accountability ensures humans and organizations own outcomes and have governance in place."
+      "explanation": "Accountability ensures humans and organizations own outcomes and have governance in place.",
+      "topicKey": "responsible_ai"
     },
     {
       "id": "q017",
       "domain": "concepts_responsibilities",
       "topic": "AI workloads",
       "question": "You need to detect manufacturing defects from camera images on an assembly line. Which workload category fits best?",
-      "options": ["Natural language processing", "Computer vision", "Speech synthesis"],
+      "options": [
+        "Natural language processing",
+        "Computer vision",
+        "Speech synthesis"
+      ],
       "correctIndex": 1,
-      "explanation": "Image-based inspection is a classic computer vision scenario."
+      "explanation": "Image-based inspection is a classic computer vision scenario.",
+      "topicKey": "computer_vision"
     },
     {
       "id": "q018",
       "domain": "concepts_responsibilities",
       "topic": "AI workloads",
       "question": "You want to route customer emails to departments by intent (billing vs. technical). Which workload fits best?",
-      "options": ["Computer vision", "Natural language processing", "Robotics kinematics"],
+      "options": [
+        "Computer vision",
+        "Natural language processing",
+        "Robotics kinematics"
+      ],
       "correctIndex": 1,
-      "explanation": "Text classification and understanding are core NLP tasks."
+      "explanation": "Text classification and understanding are core NLP tasks.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q019",
@@ -235,7 +289,8 @@
         "Skip Responsible AI because it rarely appears."
       ],
       "correctIndex": 1,
-      "explanation": "Microsoft’s guidance stresses scenario thinking: matching tools and principles to realistic situations."
+      "explanation": "Microsoft’s guidance stresses scenario thinking: matching tools and principles to realistic situations.",
+      "topicKey": "concepts_governance"
     },
     {
       "id": "q020",
@@ -248,7 +303,8 @@
         "A local-only SQLite file with no network"
       ],
       "correctIndex": 1,
-      "explanation": "Clients use endpoints (URLs), authentication, and request/response patterns to consume cloud AI services."
+      "explanation": "Clients use endpoints (URLs), authentication, and request/response patterns to consume cloud AI services.",
+      "topicKey": "concepts_governance"
     },
     {
       "id": "q021",
@@ -261,7 +317,8 @@
         "Eliminate the need for authentication in APIs."
       ],
       "correctIndex": 1,
-      "explanation": "Foundry provides a platform for AI development, deployment, and tooling—confirm current names and features in Microsoft Learn."
+      "explanation": "Foundry provides a platform for AI development, deployment, and tooling—confirm current names and features in Microsoft Learn.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q022",
@@ -274,7 +331,8 @@
         "USB bulk transfer only"
       ],
       "correctIndex": 1,
-      "explanation": "Apps typically call secured HTTP APIs; exact auth mechanisms depend on the service and configuration."
+      "explanation": "Apps typically call secured HTTP APIs; exact auth mechanisms depend on the service and configuration.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q023",
@@ -287,7 +345,8 @@
         "It is required by Responsible AI."
       ],
       "correctIndex": 1,
-      "explanation": "Secrets belong in secure configuration (vaults, environment variables, managed identity patterns)—not public repos."
+      "explanation": "Secrets belong in secure configuration (vaults, environment variables, managed identity patterns)—not public repos.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q024",
@@ -300,7 +359,8 @@
         "A deployment with no models."
       ],
       "correctIndex": 1,
-      "explanation": "AI-901 skills reference single-agent solutions; study how Learn describes agents and orchestration in Foundry."
+      "explanation": "AI-901 skills reference single-agent solutions; study how Learn describes agents and orchestration in Foundry.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q025",
@@ -313,7 +373,8 @@
         "Training data is uploaded on every end-user keystroke without batching."
       ],
       "correctIndex": 0,
-      "explanation": "Fundamentals exams expect you to trace request flow from app to service to model output."
+      "explanation": "Fundamentals exams expect you to trace request flow from app to service to model output.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q026",
@@ -326,7 +387,8 @@
         "Only works with Java applications."
       ],
       "correctIndex": 1,
-      "explanation": "AI-901 expects you to follow client setup, method calls, and response handling at a reading-comprehension level."
+      "explanation": "AI-901 expects you to follow client setup, method calls, and response handling at a reading-comprehension level.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q027",
@@ -339,16 +401,22 @@
         "Avoiding all Azure services."
       ],
       "correctIndex": 0,
-      "explanation": "Different models support different modalities and tasks; selection should fit the scenario."
+      "explanation": "Different models support different modalities and tasks; selection should fit the scenario.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q028",
       "domain": "workloads",
       "topic": "Speech recognition",
       "question": "Speech recognition (speech-to-text) converts:",
-      "options": ["Written text into audio", "Spoken language into written text", "Images into 3D models"],
+      "options": [
+        "Written text into audio",
+        "Spoken language into written text",
+        "Images into 3D models"
+      ],
       "correctIndex": 1,
-      "explanation": "Recognition is speech→text; synthesis is text→speech."
+      "explanation": "Recognition is speech→text; synthesis is text→speech.",
+      "topicKey": "speech"
     },
     {
       "id": "q029",
@@ -361,7 +429,8 @@
         "Skips audio generation"
       ],
       "correctIndex": 1,
-      "explanation": "Normalization expands abbreviations, numbers, and symbols into speakable forms."
+      "explanation": "Normalization expands abbreviations, numbers, and symbols into speakable forms.",
+      "topicKey": "speech"
     },
     {
       "id": "q030",
@@ -374,7 +443,8 @@
         "Translates text in the image to speech only."
       ],
       "correctIndex": 1,
-      "explanation": "Detection finds where objects are and what they are; classification assigns one label to the whole image."
+      "explanation": "Detection finds where objects are and what they are; classification assigns one label to the whole image.",
+      "topicKey": "computer_vision"
     },
     {
       "id": "q031",
@@ -387,7 +457,8 @@
         "Regulations never apply to AI."
       ],
       "correctIndex": 0,
-      "explanation": "Responsible deployment often combines automation with review, escalation, and monitoring."
+      "explanation": "Responsible deployment often combines automation with review, escalation, and monitoring.",
+      "topicKey": "responsible_ai"
     },
     {
       "id": "q032",
@@ -400,25 +471,36 @@
         "Only usable without any metrics or logging."
       ],
       "correctIndex": 0,
-      "explanation": "Deployment exposes the model for inference behind endpoints and governance controls."
+      "explanation": "Deployment exposes the model for inference behind endpoints and governance controls.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q033",
       "domain": "workloads",
       "topic": "Information extraction",
       "question": "Extracting entities (names, dates, amounts) from unstructured documents is primarily:",
-      "options": ["A pure audio task", "An NLP / language understanding task", "A GPU cooling task"],
+      "options": [
+        "A pure audio task",
+        "An NLP / language understanding task",
+        "A GPU cooling task"
+      ],
       "correctIndex": 1,
-      "explanation": "Entity extraction is a text understanding problem, often using NLP models."
+      "explanation": "Entity extraction is a text understanding problem, often using NLP models.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q034",
       "domain": "concepts_responsibilities",
       "topic": "Transparency vs privacy",
       "question": "Explaining model behavior to users is encouraged, but sharing raw sensitive training records publicly would violate:",
-      "options": ["Transparency", "Privacy and security", "Inclusiveness"],
+      "options": [
+        "Transparency",
+        "Privacy and security",
+        "Inclusiveness"
+      ],
       "correctIndex": 1,
-      "explanation": "Transparency does not require exposing private data; protect data while explaining at an appropriate level."
+      "explanation": "Transparency does not require exposing private data; protect data while explaining at an appropriate level.",
+      "topicKey": "responsible_ai"
     },
     {
       "id": "q035",
@@ -431,7 +513,8 @@
         "Remove all authentication"
       ],
       "correctIndex": 0,
-      "explanation": "Operational monitoring supports reliability and safety in production scenarios."
+      "explanation": "Operational monitoring supports reliability and safety in production scenarios.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q036",
@@ -444,7 +527,8 @@
         "Database normalization theory"
       ],
       "correctIndex": 0,
-      "explanation": "Prompt design steers the model toward the desired behavior and format."
+      "explanation": "Prompt design steers the model toward the desired behavior and format.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q037",
@@ -457,7 +541,8 @@
         "HTTPS is optional everywhere."
       ],
       "correctIndex": 0,
-      "explanation": "Bias can enter through data, labels, and deployment context; testing and mitigation are key."
+      "explanation": "Bias can enter through data, labels, and deployment context; testing and mitigation are key.",
+      "topicKey": "responsible_ai"
     },
     {
       "id": "q038",
@@ -470,7 +555,8 @@
         "To prevent logging"
       ],
       "correctIndex": 0,
-      "explanation": "APIs use keys, tokens, or managed identities so only permitted clients access paid or sensitive capabilities."
+      "explanation": "APIs use keys, tokens, or managed identities so only permitted clients access paid or sensitive capabilities.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q039",
@@ -483,25 +569,36 @@
         "Only rotating images by 90°"
       ],
       "correctIndex": 0,
-      "explanation": "Summarization produces new text conditioned on input; it is a common generative NLP task."
+      "explanation": "Summarization produces new text conditioned on input; it is a common generative NLP task.",
+      "topicKey": "nlp_generative"
     },
     {
       "id": "q040",
       "domain": "concepts_responsibilities",
       "topic": "Reliability",
       "question": "Showing confidence scores or “I’m not sure” behavior for low-confidence predictions supports:",
-      "options": ["Reliability and safety", "Irrelevant marketing", "Deleting all logs"],
+      "options": [
+        "Reliability and safety",
+        "Irrelevant marketing",
+        "Deleting all logs"
+      ],
       "correctIndex": 0,
-      "explanation": "Calibrated uncertainty and safe fallbacks reduce harmful automated actions."
+      "explanation": "Calibrated uncertainty and safe fallbacks reduce harmful automated actions.",
+      "topicKey": "responsible_ai"
     },
     {
       "id": "q041",
       "domain": "foundry_implementation",
       "topic": "Solution design",
       "question": "Placing API keys in environment variables or a secure vault instead of hardcoding aligns with:",
-      "options": ["Privacy and security practices for secrets", "Avoiding all documentation", "Disabling HTTPS"],
+      "options": [
+        "Privacy and security practices for secrets",
+        "Avoiding all documentation",
+        "Disabling HTTPS"
+      ],
       "correctIndex": 0,
-      "explanation": "Secret management protects against leakage and abuse."
+      "explanation": "Secret management protects against leakage and abuse.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q042",
@@ -514,16 +611,22 @@
         "Replace the need for a microphone"
       ],
       "correctIndex": 0,
-      "explanation": "MFCCs capture perceptually relevant spectral information from framed audio."
+      "explanation": "MFCCs capture perceptually relevant spectral information from framed audio.",
+      "topicKey": "speech"
     },
     {
       "id": "q043",
       "domain": "concepts_responsibilities",
       "topic": "Accountability",
       "question": "Documenting who owns model updates, incident response, and compliance reviews is part of:",
-      "options": ["Governance and accountability", "Tokenization", "Sampling rate selection"],
+      "options": [
+        "Governance and accountability",
+        "Tokenization",
+        "Sampling rate selection"
+      ],
       "correctIndex": 0,
-      "explanation": "Clear ownership and processes support accountable AI operations."
+      "explanation": "Clear ownership and processes support accountable AI operations.",
+      "topicKey": "responsible_ai"
     },
     {
       "id": "q044",
@@ -536,7 +639,8 @@
         "Running training on every click with no batching"
       ],
       "correctIndex": 0,
-      "explanation": "Production patterns combine auth, inference calls, and UI handling."
+      "explanation": "Production patterns combine auth, inference calls, and UI handling.",
+      "topicKey": "foundry_azure"
     },
     {
       "id": "q045",
@@ -549,7 +653,220 @@
         "Only TF-IDF without models"
       ],
       "correctIndex": 0,
-      "explanation": "Cross-modal tasks combine vision encoders with language decoders or multimodal models."
+      "explanation": "Cross-modal tasks combine vision encoders with language decoders or multimodal models.",
+      "topicKey": "computer_vision"
+    },
+    {
+      "id": "q046",
+      "domain": "workloads",
+      "topicKey": "speech",
+      "topic": "Speech recognition — pre-processing",
+      "question": "What activity happens during the pre-processing stage of speech recognition?",
+      "options": [
+        "The audio is converted to a proprietary video format only.",
+        "Background noise is intentionally added to the audio signal.",
+        "Feature vectors are extracted from the audio waveform for modeling."
+      ],
+      "correctIndex": 2,
+      "explanation": "Pre-processing turns raw audio into compact features (for example spectral features) suitable for acoustic modeling."
+    },
+    {
+      "id": "q047",
+      "domain": "workloads",
+      "topicKey": "speech",
+      "topic": "Speech — phonemes",
+      "question": "What are phonemes?",
+      "options": [
+        "Artifacts removed from the signal only for music playback.",
+        "The smallest unit of sound in speech.",
+        "AI models that generate images from text."
+      ],
+      "correctIndex": 1,
+      "explanation": "Phonemes are the minimal speech sounds used when mapping text to pronunciation in synthesis and recognition pipelines."
+    },
+    {
+      "id": "q048",
+      "domain": "workloads",
+      "topicKey": "speech",
+      "topic": "Speech synthesis — prosody",
+      "question": "Why is it important to generate prosody in speech synthesis?",
+      "options": [
+        "Prosody maximizes the volume of the audio output only.",
+        "Prosody translates speech to the listener’s native language automatically.",
+        "Prosody helps ensure natural pronunciation, rhythm, and speech cadence."
+      ],
+      "correctIndex": 2,
+      "explanation": "Prosody controls stress, intonation, and timing so synthesized speech sounds natural, not robotic."
+    },
+    {
+      "id": "q049",
+      "domain": "workloads",
+      "topicKey": "computer_vision",
+      "topic": "Image classification",
+      "question": "A checkout camera assigns one label to an entire photo of a single piece of fruit (apple vs. banana). Which task is this?",
+      "options": [
+        "Semantic segmentation",
+        "Image classification",
+        "Object detection with multiple bounding boxes"
+      ],
+      "correctIndex": 1,
+      "explanation": "Image classification predicts a single label for the whole image based on its main subject."
+    },
+    {
+      "id": "q050",
+      "domain": "workloads",
+      "topicKey": "computer_vision",
+      "topic": "Object detection",
+      "question": "You need to find several products in one photo and know where each item appears. Which approach matches this goal?",
+      "options": [
+        "Image classification only",
+        "Object detection (for example with bounding boxes)",
+        "Tokenization of the image file name"
+      ],
+      "correctIndex": 1,
+      "explanation": "Object detection locates multiple objects and their regions, not just one label for the entire image."
+    },
+    {
+      "id": "q051",
+      "domain": "workloads",
+      "topicKey": "computer_vision",
+      "topic": "Semantic segmentation",
+      "question": "Semantic segmentation differs from basic object detection because it typically:",
+      "options": [
+        "Classifies each pixel by the object or class it belongs to",
+        "Outputs only a single label for the entire image",
+        "Converts speech to text"
+      ],
+      "correctIndex": 0,
+      "explanation": "Segmentation assigns a class per pixel, yielding precise masks of object regions."
+    },
+    {
+      "id": "q052",
+      "domain": "workloads",
+      "topicKey": "computer_vision",
+      "topic": "Convolutional neural networks",
+      "question": "In a typical CNN for image classification, convolutional layers primarily:",
+      "options": [
+        "Replace the need for any training data.",
+        "Apply filters to build feature maps that capture visual patterns before prediction.",
+        "Encrypt images for storage only."
+      ],
+      "correctIndex": 1,
+      "explanation": "CNNs stack convolutions to extract hierarchical features (edges, textures, parts) summarized as feature maps."
+    },
+    {
+      "id": "q053",
+      "domain": "workloads",
+      "topicKey": "computer_vision",
+      "topic": "Vision transformers (ViT)",
+      "question": "In a vision transformer (ViT), images are often processed by:",
+      "options": [
+        "Splitting the image into patches and embedding each patch for attention-based modeling.",
+        "Ignoring spatial structure entirely without embeddings.",
+        "Using only TF-IDF on filenames."
+      ],
+      "correctIndex": 0,
+      "explanation": "ViT models treat image patches like tokens, applying transformer attention over patch embeddings."
+    },
+    {
+      "id": "q054",
+      "domain": "workloads",
+      "topicKey": "computer_vision",
+      "topic": "Multimodal models",
+      "question": "When vision and language encoders are trained so images and text share a joint representation, models can:",
+      "options": [
+        "Only classify images without any text output.",
+        "Relate visual features to language (for example captions or tags) in a shared embedding space.",
+        "Remove the need for any training data."
+      ],
+      "correctIndex": 1,
+      "explanation": "Multimodal models align image and text embeddings, enabling captioning, tagging, and cross-modal search."
+    },
+    {
+      "id": "q055",
+      "domain": "workloads",
+      "topicKey": "computer_vision",
+      "topic": "Image generation (diffusion)",
+      "question": "Many modern image-generation models use diffusion: they start from noise and iteratively:",
+      "options": [
+        "Remove noise and refine structure until the image matches the prompt-driven signal.",
+        "Increase noise until the image disappears.",
+        "Convert the image to MFCCs only."
+      ],
+      "correctIndex": 0,
+      "explanation": "Diffusion models denoise step by step, conditioning on the prompt to synthesize a coherent image."
+    },
+    {
+      "id": "q056",
+      "domain": "workloads",
+      "topicKey": "computer_vision",
+      "topic": "Contextual image analysis",
+      "question": "Multimodal computer vision models that interpret relationships between objects and descriptive text are an example of:",
+      "options": [
+        "Contextual or semantic image analysis beyond a single class label",
+        "Pure speech synthesis",
+        "Disk defragmentation"
+      ],
+      "correctIndex": 0,
+      "explanation": "Contextual analysis ties visual content to language for richer understanding (scenes, activities, descriptions)."
+    },
+    {
+      "id": "q057",
+      "domain": "workloads",
+      "topicKey": "computer_vision",
+      "topic": "Images & processing",
+      "question": "Digitizing sound for speech often uses thousands of samples per second (for example 16 kHz). For vision, an image is digitized as:",
+      "options": [
+        "A grid of pixels with numeric color or intensity values per channel.",
+        "A single number with no spatial layout.",
+        "Only a text caption with no raster data."
+      ],
+      "correctIndex": 0,
+      "explanation": "Images are discrete grids of pixels; many vision pipelines preprocess (resize, normalize) before model input."
+    },
+    {
+      "id": "q058",
+      "domain": "concepts_responsibilities",
+      "topicKey": "concepts_governance",
+      "topic": "Computer vision — definition",
+      "question": "Computer vision typically refers to AI that:",
+      "options": [
+        "Processes visual input such as images, video, or camera streams to extract meaning.",
+        "Only generates MIDI music files.",
+        "Only stores blobs in cold storage without analysis."
+      ],
+      "correctIndex": 0,
+      "explanation": "Computer vision covers tasks like classification, detection, segmentation, and multimodal understanding of visual data."
+    }
+  ],
+  "topicFilters": [
+    {
+      "id": "all",
+      "label": "All topic areas"
+    },
+    {
+      "id": "responsible_ai",
+      "label": "Responsible AI"
+    },
+    {
+      "id": "nlp_generative",
+      "label": "NLP & generative AI"
+    },
+    {
+      "id": "speech",
+      "label": "Speech (recognition & synthesis)"
+    },
+    {
+      "id": "computer_vision",
+      "label": "Computer vision & multimodal"
+    },
+    {
+      "id": "foundry_azure",
+      "label": "Foundry, APIs & app integration"
+    },
+    {
+      "id": "concepts_governance",
+      "label": "AI concepts, workloads & governance"
     }
   ]
 }

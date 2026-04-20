@@ -1,7 +1,8 @@
 (function () {
   "use strict";
 
-  const STORAGE_KEY = "ai901_qa_sim_v1";
+  const STORAGE_KEY = "ai901_qa_sim_v2";
+  const LEGACY_KEY = "ai901_qa_sim_v1";
 
   const state = {
     data: null,
@@ -22,6 +23,15 @@
     return document.getElementById(id);
   }
 
+  function defaultStore() {
+    return {
+      version: 2,
+      sessions: [],
+      lifetime: { attempts: 0, totalCorrect: 0, totalQuestions: 0 },
+      topicStats: {},
+    };
+  }
+
   function loadState() {
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
@@ -32,20 +42,173 @@
     }
   }
 
-  function saveStateStats(correct, total) {
-    const prev = loadState() || { attempts: 0, totalCorrect: 0, totalQuestions: 0 };
-    const next = {
-      attempts: prev.attempts + 1,
-      totalCorrect: prev.totalCorrect + correct,
-      totalQuestions: prev.totalQuestions + total,
-      lastAt: new Date().toISOString(),
-    };
+  function saveState(data) {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
     } catch {
       /* ignore */
     }
-    return next;
+  }
+
+  function migrateLegacy() {
+    if (localStorage.getItem(STORAGE_KEY)) return;
+    const raw = localStorage.getItem(LEGACY_KEY);
+    if (!raw) return;
+    try {
+      const v1 = JSON.parse(raw);
+      const s = defaultStore();
+      if (v1.totalQuestions != null) {
+        s.lifetime.attempts = v1.attempts || 0;
+        s.lifetime.totalCorrect = v1.totalCorrect || 0;
+        s.lifetime.totalQuestions = v1.totalQuestions || 0;
+      }
+      saveState(s);
+    } catch {
+      /* ignore */
+    }
+  }
+
+  function scaledScore(correct, total) {
+    if (!total) return 0;
+    return Math.round((correct / total) * 1000);
+  }
+
+  function buildBreakdown() {
+    const out = {};
+    for (const q of state.session) {
+      const k = q.topicKey || "unknown";
+      if (!out[k]) out[k] = { correct: 0, total: 0 };
+      out[k].total += 1;
+      const a = state.answers[q.id];
+      if (a !== undefined && a === mapCorrectIndex(q)) out[k].correct += 1;
+    }
+    return out;
+  }
+
+  function appendSession(record) {
+    const s = loadState() || defaultStore();
+    s.sessions = s.sessions || [];
+    s.sessions.push(record);
+    if (s.sessions.length > 100) s.sessions = s.sessions.slice(-100);
+
+    s.lifetime = s.lifetime || { attempts: 0, totalCorrect: 0, totalQuestions: 0 };
+    s.lifetime.attempts += 1;
+    s.lifetime.totalCorrect += record.correct;
+    s.lifetime.totalQuestions += record.total;
+
+    s.topicStats = s.topicStats || {};
+    for (const [k, v] of Object.entries(record.breakdown || {})) {
+      if (!s.topicStats[k]) s.topicStats[k] = { correct: 0, total: 0 };
+      s.topicStats[k].correct += v.correct;
+      s.topicStats[k].total += v.total;
+    }
+    saveState(s);
+    return s;
+  }
+
+  function clearHistory() {
+    if (!confirm("Clear all saved practice history on this device?")) return;
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(LEGACY_KEY);
+    } catch {
+      /* ignore */
+    }
+    renderProgress();
+    const msg = formatCumulativeLine(loadState());
+    if (els.cumulative) els.cumulative.textContent = msg || "";
+  }
+
+  function formatCumulativeLine(st) {
+    if (!st || !st.lifetime || !st.lifetime.attempts) return "";
+    const L = st.lifetime;
+    const avg =
+      L.totalQuestions > 0 ? Math.round((L.totalCorrect / L.totalQuestions) * 1000) : 0;
+    return `Lifetime: ${L.attempts} session(s), rolling ~${avg} / 1000 (by items answered).`;
+  }
+
+  function topicLabel(topicId) {
+    const t = (state.data && state.data.topicFilters) || [];
+    const f = t.find((x) => x.id === topicId);
+    return f ? f.label : topicId;
+  }
+
+  function renderProgress() {
+    if (!els.progressPanel) return;
+    const st = loadState();
+    if (!st || !st.lifetime || !st.lifetime.attempts) {
+      els.progressPanel.innerHTML =
+        "<p class=\"progress-empty\">Complete a quiz to see trends, recent scores, and per-topic accuracy.</p>";
+      return;
+    }
+
+    const sessions = st.sessions || [];
+    const last = sessions.length ? sessions[sessions.length - 1] : null;
+    const prev = sessions.length > 1 ? sessions[sessions.length - 2] : null;
+
+    let compare = "";
+    if (last && prev) {
+      const delta = last.score - prev.score;
+      const dir =
+        delta > 0 ? "improved" : delta < 0 ? "lower than" : "same as";
+      const arrow = delta > 0 ? "↑" : delta < 0 ? "↓" : "→";
+      compare = `<p class="progress-compare">${arrow} Last session (<strong>${last.score}</strong> / 1000) is <strong>${dir}</strong> your previous (<strong>${prev.score}</strong> / 1000)${delta !== 0 ? ` — <span class="delta">${delta > 0 ? "+" : ""}${delta}</span> points` : ""}.</p>`;
+    } else if (last) {
+      compare = `<p class="progress-compare">Last session score: <strong>${last.score}</strong> / 1000 (${last.correct}/${last.total} correct).</p>`;
+    }
+
+    const recent = sessions.slice(-8).reverse();
+    const rows = recent
+      .map((sess) => {
+        const d = new Date(sess.at);
+        const ds = isNaN(d.getTime())
+          ? sess.at
+          : d.toLocaleString(undefined, { dateStyle: "short", timeStyle: "short" });
+        return `<tr><td>${escapeHtml(ds)}</td><td>${sess.score}</td><td>${sess.correct}/${sess.total}</td><td>${escapeHtml(sess.mode)}</td><td>${escapeHtml(domainLabel(sess.domainFilter || "all"))}</td><td>${escapeHtml(topicLabel(sess.topicFilter || "all"))}</td></tr>`;
+      })
+      .join("");
+
+    const topicRows = Object.entries(st.topicStats || {})
+      .filter(([id]) => id !== "unknown")
+      .map(([id, v]) => {
+        const pct = v.total ? Math.round((v.correct / v.total) * 100) : 0;
+        const approx = scaledScore(v.correct, v.total);
+        return `<tr><td>${escapeHtml(topicLabel(id))}</td><td>${v.correct}/${v.total}</td><td>${pct}% (~${approx}/1000)</td></tr>`;
+      })
+      .join("");
+
+    els.progressPanel.innerHTML = `
+      ${compare}
+      <div class="progress-section">
+        <h3 class="progress-h3">Recent sessions</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>When</th><th>Score</th><th>Correct</th><th>Mode</th><th>Domain</th><th>Topic filter</th></tr></thead>
+            <tbody>${rows || "<tr><td colspan=\"6\">No session rows</td></tr>"}</tbody>
+          </table>
+        </div>
+      </div>
+      ${
+        topicRows
+          ? `<div class="progress-section">
+        <h3 class="progress-h3">Accuracy by topic area (lifetime)</h3>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Topic area</th><th>Items</th><th>Approx.</th></tr></thead>
+            <tbody>${topicRows}</tbody>
+          </table>
+        </div>
+      </div>`
+          : ""
+      }
+    `;
+  }
+
+  function domainLabel(domainId) {
+    if (!domainId || domainId === "all") return "All";
+    const d = (state.data && state.data.domains) || [];
+    const x = d.find((z) => z.id === domainId);
+    return x ? x.shortLabel : domainId;
   }
 
   function shuffleArray(arr) {
@@ -57,17 +220,26 @@
     return a;
   }
 
-  function getFilteredQuestions(domainId) {
-    const all = state.data.questions;
-    if (!domainId || domainId === "all") return all.slice();
-    return all.filter((q) => q.domain === domainId);
+  function getFilteredQuestions(domainId, topicKey) {
+    let list = state.data.questions.slice();
+    if (domainId && domainId !== "all") list = list.filter((q) => q.domain === domainId);
+    if (topicKey && topicKey !== "all") list = list.filter((q) => (q.topicKey || "") === topicKey);
+    return list;
+  }
+
+  function updateFilterCount() {
+    const n = getFilteredQuestions(els.domainFilter.value, els.topicFilter.value).length;
+    if (els.filterCount) els.filterCount.textContent = String(n);
+    const max = Math.max(1, n);
+    els.questionCount.max = max;
+    const cur = parseInt(els.questionCount.value, 10) || 20;
+    if (cur > max) els.questionCount.value = max;
+    if (els.startBtn) els.startBtn.disabled = n === 0;
   }
 
   function buildOptionPermutation(question) {
     const n = question.options.length;
-    const order = shuffleArray(
-      Array.from({ length: n }, (_, i) => i)
-    );
+    const order = shuffleArray(Array.from({ length: n }, (_, i) => i));
     state.shuffledOptions[question.id] = order;
   }
 
@@ -265,32 +437,51 @@
     return { correct, total: state.session.length, answered };
   }
 
-  function scaledScore(correct, total) {
-    if (!total) return 0;
-    return Math.round((correct / total) * 1000);
-  }
-
-  function formatCumulativeLine(stats) {
-    if (!stats || !stats.attempts) return "";
-    const avg =
-      stats.totalQuestions > 0
-        ? Math.round((stats.totalCorrect / stats.totalQuestions) * 1000)
-        : 0;
-    return `All-time practice: ${stats.attempts} session(s), approximate rolling ${avg} / 1000 (by items).`;
-  }
-
   function finishQuiz(timedOut) {
     stopTimer();
     const { correct, total, answered } = scoreSession();
     const score = scaledScore(correct, total);
     const pass = score >= 700;
 
-    saveStateStats(correct, total);
+    const breakdown = buildBreakdown();
+    const sessionRecord = {
+      id:
+        typeof crypto !== "undefined" && crypto.randomUUID
+          ? crypto.randomUUID()
+          : String(Date.now()),
+      at: new Date().toISOString(),
+      mode: state.mode,
+      domainFilter: els.domainFilter.value,
+      topicFilter: els.topicFilter.value,
+      score,
+      correct,
+      total,
+      answered,
+      timedOut: !!timedOut,
+      breakdown,
+    };
+    appendSession(sessionRecord);
 
     showScreen("screen-results");
     els.resultsTimed.classList.toggle("hidden", !timedOut);
     els.resultsScore.innerHTML = `${score}<span> / 1000</span>`;
+
+    const st = loadState();
+    const sessions = (st && st.sessions) || [];
+    let sessionCompare = "";
+    if (sessions.length >= 2) {
+      const cur = sessions[sessions.length - 1];
+      const prevS = sessions[sessions.length - 2];
+      const d = cur.score - prevS.score;
+      if (d !== 0) {
+        sessionCompare = `<p class="session-compare">${d > 0 ? "↑" : "↓"} vs your previous session this device: <strong>${d > 0 ? "+" : ""}${d}</strong> points (${prevS.score} → ${cur.score}).</p>`;
+      } else {
+        sessionCompare = `<p class="session-compare">Same approximate score as your previous session (${cur.score} / 1000).</p>`;
+      }
+    }
+
     els.resultsDetail.innerHTML = `
+      ${sessionCompare}
       <div class="stat-grid">
         <div class="stat-card"><dt>Correct</dt><dd>${correct}</dd></div>
         <div class="stat-card"><dt>Questions</dt><dd>${total}</dd></div>
@@ -305,18 +496,17 @@
       if (els.cumulative) els.cumulative.textContent = msg;
       if (els.cumulativeEnd) els.cumulativeEnd.textContent = msg;
     }
+    renderProgress();
   }
 
   function startQuiz() {
     const domain = els.domainFilter.value;
+    const topicKey = els.topicFilter.value;
     const mode = els.modeRadioStudy.checked ? "study" : "exam";
-    const count = Math.min(
-      parseInt(els.questionCount.value, 10) || 20,
-      getFilteredQuestions(domain).length
-    );
+    const poolAll = getFilteredQuestions(domain, topicKey);
+    const count = Math.min(parseInt(els.questionCount.value, 10) || 20, poolAll.length);
 
-    let pool = getFilteredQuestions(domain);
-    pool = shuffleArray(pool).slice(0, count);
+    let pool = shuffleArray(poolAll).slice(0, count);
 
     state.session = pool;
     state.index = 0;
@@ -356,11 +546,22 @@
     renderQuestion();
   }
 
+  function populateTopicFilter() {
+    const tf = state.data.topicFilters || [{ id: "all", label: "All topic areas" }];
+    els.topicFilter.innerHTML = tf
+      .map((t) => `<option value="${escapeHtml(t.id)}">${escapeHtml(t.label)}</option>`)
+      .join("");
+  }
+
   async function init() {
+    migrateLegacy();
+
     els.screenStart = $("screen-start");
     els.screenQuiz = $("screen-quiz");
     els.screenResults = $("screen-results");
     els.domainFilter = $("domain-filter");
+    els.topicFilter = $("topic-filter");
+    els.filterCount = $("filter-count");
     els.questionCount = $("question-count");
     els.modeRadioStudy = $("mode-study");
     els.modeRadioExam = $("mode-exam");
@@ -382,6 +583,8 @@
     els.cumulative = $("cumulative-stats");
     els.cumulativeEnd = $("cumulative-stats-end");
     els.domainBadges = $("domain-badges");
+    els.progressPanel = $("progress-panel");
+    els.btnClearHistory = $("btn-clear-history");
 
     const res = await fetch("data/questions.json", { cache: "no-store" });
     if (!res.ok) {
@@ -392,17 +595,26 @@
     state.data = await res.json();
 
     els.domainBadges.innerHTML = renderDomainBadges();
+    populateTopicFilter();
 
     const maxQ = state.data.questions.length;
     els.questionCount.max = maxQ;
     els.questionCount.value = Math.min(20, maxQ);
 
+    updateFilterCount();
+
     const msg = formatCumulativeLine(loadState());
     if (msg && els.cumulative) els.cumulative.textContent = msg;
+
+    renderProgress();
 
     els.startBtn.addEventListener("click", startQuiz);
     els.prevBtn.addEventListener("click", onPrev);
     els.nextBtn.addEventListener("click", onNext);
+    if (els.btnClearHistory) els.btnClearHistory.addEventListener("click", clearHistory);
+
+    els.domainFilter.addEventListener("change", updateFilterCount);
+    els.topicFilter.addEventListener("change", updateFilterCount);
 
     els.modeRadioExam.addEventListener("change", () => {
       els.examMinutes.disabled = !els.modeRadioExam.checked;
