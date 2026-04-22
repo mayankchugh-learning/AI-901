@@ -305,12 +305,15 @@
       foundry_implementation: "domain-2",
       workloads: "domain-3",
     };
-    return d
+    const row = d
       .map(
         (x) =>
           `<span class="badge ${map[x.id] || ""}" title="${escapeAttr(x.label)}">${escapeHtml(x.shortLabel)} · ${escapeHtml(x.weight)}</span>`
       )
       .join(" ");
+    const n = state.data.questions.length;
+    const bank = `<span class="badge" title="Total items in data/questions.json">${escapeHtml(String(n))} questions in bank</span>`;
+    return row + " " + bank;
   }
 
   function escapeHtml(s) {
