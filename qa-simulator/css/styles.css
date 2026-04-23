@@ -13,6 +13,25 @@
   --radius: 12px;
   --font: "Segoe UI", system-ui, -apple-system, sans-serif;
   --shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  --bg-grad-start: #1e3a5f;
+  --header-bg: rgba(26, 35, 50, 0.85);
+}
+
+[data-theme="light"] {
+  --bg: #f4f7fb;
+  --surface: #ffffff;
+  --surface-hover: #edf3fb;
+  --border: #d5e0ef;
+  --text: #182433;
+  --muted: #52657d;
+  --accent: #256fda;
+  --accent-dim: #1e59ad;
+  --success: #0f9d58;
+  --danger: #d93025;
+  --warn: #b26a00;
+  --shadow: 0 8px 24px rgba(10, 35, 66, 0.08);
+  --bg-grad-start: #dbe9ff;
+  --header-bg: rgba(255, 255, 255, 0.9);
 }
 
 *,
@@ -30,7 +49,11 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font);
-  background: radial-gradient(ellipse 120% 80% at 50% -20%, #1e3a5f 0%, var(--bg) 55%);
+  background: radial-gradient(
+    ellipse 120% 80% at 50% -20%,
+    var(--bg-grad-start) 0%,
+    var(--bg) 55%
+  );
   color: var(--text);
   line-height: 1.5;
 }
@@ -38,7 +61,7 @@ body {
 .app-header {
   padding: 1.25rem 1.5rem;
   border-bottom: 1px solid var(--border);
-  background: rgba(26, 35, 50, 0.85);
+  background: var(--header-bg);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
   position: sticky;
@@ -60,6 +83,25 @@ body {
   font-size: 1.35rem;
   font-weight: 650;
   letter-spacing: -0.02em;
+}
+
+.theme-switcher {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.theme-switcher label {
+  margin: 0;
+  font-size: 0.75rem;
+}
+
+.theme-switcher select {
+  width: auto;
+  min-width: 6.5rem;
+  padding: 0.35rem 0.5rem;
+  font-size: 0.86rem;
 }
 
 .app-sub {

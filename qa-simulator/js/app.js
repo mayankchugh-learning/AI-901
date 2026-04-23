@@ -3,6 +3,7 @@
 
   const STORAGE_KEY = "ai901_qa_sim_v2";
   const LEGACY_KEY = "ai901_qa_sim_v1";
+  const THEME_KEY = "ai901_theme_v1";
 
   const state = {
     data: null,
@@ -22,6 +23,27 @@
 
   function $(id) {
     return document.getElementById(id);
+  }
+
+  function applyTheme(theme) {
+    const t = theme === "light" ? "light" : "dark";
+    document.documentElement.setAttribute("data-theme", t);
+    if (els.themeSelect) els.themeSelect.value = t;
+    try {
+      localStorage.setItem(THEME_KEY, t);
+    } catch {
+      /* ignore */
+    }
+  }
+
+  function initTheme() {
+    let saved = null;
+    try {
+      saved = localStorage.getItem(THEME_KEY);
+    } catch {
+      saved = null;
+    }
+    applyTheme(saved || "dark");
   }
 
   function defaultStore() {
@@ -654,6 +676,7 @@
     els.screenQuiz = $("screen-quiz");
     els.screenResults = $("screen-results");
     els.screenStudy = $("screen-study");
+    els.themeSelect = $("theme-select");
     els.appMode = $("app-mode");
     els.quizConfig = $("quiz-config");
     els.studyConfig = $("study-config");
@@ -725,6 +748,8 @@
 
     renderProgress();
 
+    initTheme();
+
     els.startBtn.addEventListener("click", startQuiz);
     els.prevBtn.addEventListener("click", onPrev);
     els.nextBtn.addEventListener("click", onNext);
@@ -735,6 +760,9 @@
     if (els.btnOpenStudy) els.btnOpenStudy.addEventListener("click", openStudyPage);
     if (els.btnBackStart)
       els.btnBackStart.addEventListener("click", () => showScreen("screen-start"));
+    if (els.themeSelect) {
+      els.themeSelect.addEventListener("change", () => applyTheme(els.themeSelect.value));
+    }
 
     els.domainFilter.addEventListener("change", updateFilterCount);
     els.topicFilter.addEventListener("change", updateFilterCount);
