@@ -6,6 +6,7 @@
 
   const state = {
     data: null,
+    studyData: null,
     session: [],
     index: 0,
     mode: "study",
@@ -337,7 +338,7 @@
   }
 
   function showScreen(id) {
-    ["screen-start", "screen-quiz", "screen-results"].forEach((sid) => {
+    ["screen-start", "screen-quiz", "screen-results", "screen-study"].forEach((sid) => {
       const el = $(sid);
       if (el) el.classList.toggle("hidden", sid !== id);
     });
@@ -601,12 +602,67 @@
       .join("");
   }
 
+  function toggleAppMode() {
+    const mode = els.appMode ? els.appMode.value : "quiz";
+    const study = mode === "study";
+    if (els.quizConfig) els.quizConfig.classList.toggle("hidden", study);
+    if (els.studyConfig) els.studyConfig.classList.toggle("hidden", !study);
+  }
+
+  function getStudyPagesBySection(section) {
+    const pages = (state.studyData && state.studyData.pages) || [];
+    if (!section || section === "all") return pages.slice();
+    return pages.filter((p) => p.section === section);
+  }
+
+  function populateStudySections() {
+    const pages = (state.studyData && state.studyData.pages) || [];
+    const sections = Array.from(new Set(pages.map((p) => p.section)));
+    els.studySection.innerHTML = [
+      `<option value="all">All sections</option>`,
+      ...sections.map((s) => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`),
+    ].join("");
+  }
+
+  function populateStudyPages() {
+    const section = els.studySection.value;
+    const pages = getStudyPagesBySection(section);
+    els.studyPage.innerHTML = pages
+      .map((p) => `<option value="${escapeHtml(p.id)}">${escapeHtml(p.module)} (${escapeHtml(p.section)})</option>`)
+      .join("");
+    if (els.btnOpenStudy) els.btnOpenStudy.disabled = pages.length === 0;
+  }
+
+  function openStudyPage() {
+    const id = els.studyPage.value;
+    const pages = (state.studyData && state.studyData.pages) || [];
+    const page = pages.find((p) => p.id === id);
+    if (!page) return;
+    if (els.studyCurrentMeta) {
+      els.studyCurrentMeta.textContent = `${page.section} · ${page.module}`;
+    }
+    if (els.studyContent) {
+      els.studyContent.textContent = page.content || "No content found.";
+    }
+    showScreen("screen-study");
+  }
+
   async function init() {
     migrateLegacy();
 
     els.screenStart = $("screen-start");
     els.screenQuiz = $("screen-quiz");
     els.screenResults = $("screen-results");
+    els.screenStudy = $("screen-study");
+    els.appMode = $("app-mode");
+    els.quizConfig = $("quiz-config");
+    els.studyConfig = $("study-config");
+    els.studySection = $("study-section");
+    els.studyPage = $("study-page");
+    els.btnOpenStudy = $("btn-open-study");
+    els.studyCurrentMeta = $("study-current-meta");
+    els.studyContent = $("study-content");
+    els.btnBackStart = $("btn-back-start");
     els.domainFilter = $("domain-filter");
     els.topicFilter = $("topic-filter");
     els.filterCount = $("filter-count");
@@ -645,8 +701,18 @@
     }
     state.data = await res.json();
 
+    const studyRes = await fetch("data/study-content.json", { cache: "no-store" });
+    if (studyRes.ok) {
+      state.studyData = await studyRes.json();
+    } else {
+      state.studyData = { pages: [] };
+    }
+
     els.domainBadges.innerHTML = renderDomainBadges();
     populateTopicFilter();
+    populateStudySections();
+    populateStudyPages();
+    toggleAppMode();
 
     const maxQ = state.data.questions.length;
     els.questionCount.max = maxQ;
@@ -664,6 +730,11 @@
     els.nextBtn.addEventListener("click", onNext);
     if (els.btnClearHistory) els.btnClearHistory.addEventListener("click", clearHistory);
     if (els.btnWeakTopic) els.btnWeakTopic.addEventListener("click", practiceWeakestTopic);
+    if (els.appMode) els.appMode.addEventListener("change", toggleAppMode);
+    if (els.studySection) els.studySection.addEventListener("change", populateStudyPages);
+    if (els.btnOpenStudy) els.btnOpenStudy.addEventListener("click", openStudyPage);
+    if (els.btnBackStart)
+      els.btnBackStart.addEventListener("click", () => showScreen("screen-start"));
 
     els.domainFilter.addEventListener("change", updateFilterCount);
     els.topicFilter.addEventListener("change", updateFilterCount);
