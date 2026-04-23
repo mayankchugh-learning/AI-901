@@ -139,6 +139,7 @@
     if (!st || !st.lifetime || !st.lifetime.attempts) {
       els.progressPanel.innerHTML =
         "<p class=\"progress-empty\">Complete a quiz to see trends, recent scores, and per-topic accuracy.</p>";
+      if (els.weakTopicCard) els.weakTopicCard.classList.add("hidden");
       return;
     }
 
@@ -202,6 +203,50 @@
           : ""
       }
     `;
+
+    renderWeakTopicHint(st);
+  }
+
+  function findWeakestTopic(stats) {
+    const entries = Object.entries((stats && stats.topicStats) || {})
+      .filter(([id, v]) => id !== "unknown" && v.total >= 4)
+      .map(([id, v]) => ({
+        id,
+        total: v.total,
+        correct: v.correct,
+        pct: v.total ? v.correct / v.total : 0,
+      }))
+      .sort((a, b) => a.pct - b.pct || b.total - a.total);
+    return entries.length ? entries[0] : null;
+  }
+
+  function renderWeakTopicHint(stats) {
+    if (!els.weakTopicCard || !els.weakTopicText) return;
+    const weak = findWeakestTopic(stats);
+    if (!weak) {
+      els.weakTopicCard.classList.add("hidden");
+      return;
+    }
+    const pct = Math.round(weak.pct * 100);
+    els.weakTopicCard.classList.remove("hidden");
+    els.weakTopicText.textContent = `Smart focus: weakest area is ${topicLabel(
+      weak.id
+    )} at ${pct}% (${weak.correct}/${weak.total}).`;
+    els.weakTopicCard.dataset.topic = weak.id;
+  }
+
+  function practiceWeakestTopic() {
+    const st = loadState();
+    const weak = findWeakestTopic(st);
+    if (!weak) return;
+    els.topicFilter.value = weak.id;
+    els.domainFilter.value = "all";
+    updateFilterCount();
+    const max = parseInt(els.questionCount.max, 10) || 10;
+    els.questionCount.value = String(Math.min(12, max));
+    if (els.modeRadioStudy) els.modeRadioStudy.checked = true;
+    if (els.examMinutes) els.examMinutes.disabled = true;
+    startQuiz();
   }
 
   function domainLabel(domainId) {
@@ -588,6 +633,9 @@
     els.domainBadges = $("domain-badges");
     els.progressPanel = $("progress-panel");
     els.btnClearHistory = $("btn-clear-history");
+    els.weakTopicCard = $("weak-topic-card");
+    els.weakTopicText = $("weak-topic-text");
+    els.btnWeakTopic = $("btn-weak-topic");
 
     const res = await fetch("data/questions.json", { cache: "no-store" });
     if (!res.ok) {
@@ -615,6 +663,7 @@
     els.prevBtn.addEventListener("click", onPrev);
     els.nextBtn.addEventListener("click", onNext);
     if (els.btnClearHistory) els.btnClearHistory.addEventListener("click", clearHistory);
+    if (els.btnWeakTopic) els.btnWeakTopic.addEventListener("click", practiceWeakestTopic);
 
     els.domainFilter.addEventListener("change", updateFilterCount);
     els.topicFilter.addEventListener("change", updateFilterCount);
