@@ -63,11 +63,11 @@ Check understanding **in scenarios**, not only definitions.
 
 ---
 
-## 5. Exam domain 2 — Implement with Microsoft Foundry (~55–60%)
+## 5. Exam domain 2 — Implement with Azure AI Foundry (~55–60%)
 
 This domain is the larger share; spend proportionally more time here.
 
-- [ ] **Microsoft Foundry** — hubs/projects (or current UI/names), deploying or using models as described in Learn.
+- [ ] **Azure AI Foundry** — hubs/projects (or current UI/names), deploying or using models as described in Learn.
 - [ ] **Models** — choosing/using models for language, vision, generative tasks at a fundamentals level.
 - [ ] **Single-agent solutions** — how an agent-style solution is described and implemented in Foundry context.
 - [ ] **Consumption patterns** — how applications connect to models/services (endpoints, keys, configuration at conceptual level).
@@ -117,4 +117,4 @@ This domain is the larger share; spend proportionally more time here.
 
 ---
 
-*Refresh this checklist when Microsoft updates the study guide or course outline.*
+*Refresh this checklist when Microsoft updates the study guide or course outline. Last reviewed: 2026-04-23.*

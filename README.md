@@ -10,9 +10,10 @@ Exam skills change over time. Always verify objectives in the [AI-901 study guid
 
 | Part | Purpose |
 |------|---------|
-| Markdown study units | Notes under `AI concepts for developers and technology professionals/` (Azure AI, NLP, generative AI, speech, computer vision, Responsible AI). |
+| Markdown study units | Notes under `AI concepts for developers and technology professionals/` and `Get started with AI applications and agents on Azure/` (Azure AI, NLP, generative AI, speech, computer vision, information extraction, responsible AI). |
 | Exam orientation | [AI-901-Exam-Prep.md](AI-901-Exam-Prep.md) - links, domain weights, strategy. |
 | Readiness checklist | [AI-901-Readiness-Checklist.md](AI-901-Readiness-Checklist.md) - tasks aligned with the study guide. |
+| Module recaps and interview Q&A | Per-module `Module-summary-and-interview-QA.md` files generated under both study tracks. |
 | Q&A Simulator | [qa-simulator/](qa-simulator/) - loads [qa-simulator/data/questions.json](qa-simulator/data/questions.json) in the browser. No backend. |
 
 The simulator is practice material only. It is not a copy of the real exam or Microsoft's official practice test.
@@ -103,11 +104,13 @@ AI-901-Prep/
   AI-901-Exam-Prep.md
   AI-901-Readiness-Checklist.md
   AI concepts for developers and technology professionals/
+  Get started with AI applications and agents on Azure/
   qa-simulator/
     index.html
     css/styles.css
     js/app.js
     data/questions.json
+  scripts/
 ```
 
 ---
@@ -126,3 +129,5 @@ AI-901-Prep/
 ## Attribution
 
 Respect Microsoft Learn licensing when adding content. Exam rules and scheduling come from Microsoft's certification site.
+
+Last reviewed: 2026-04-23.

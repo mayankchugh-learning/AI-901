@@ -1,4 +1,4 @@
-# Exam AI-901: Microsoft Azure AI Fundamentals (beta)
+# Exam AI-901: Microsoft Azure AI Fundamentals
 
 Central reference for preparing for **AI-901** after registration. Official skills and wording can change; always confirm against Microsoft Learn and the latest study guide.
 
@@ -18,10 +18,11 @@ Central reference for preparing for **AI-901** after registration. Official skil
 
 ## Exam snapshot
 
-- **Name:** Microsoft Azure AI Fundamentals (**beta**)
+- **Name:** Microsoft Azure AI Fundamentals (AI-901)
 - **Passing score:** **700** (scale to 1000). [How exam scores work](https://learn.microsoft.com/en-us/credentials/certifications/exam-scoring-reports#scores-needed-to-pass-exams)
 - **Retirement date:** None listed on the exam page (confirm when scheduling).
 - **English exam update:** The English version was updated **April 15, 2026**. Localized versions are typically updated on a delayed schedule (often noted as about **eight weeks** after the English update). Re-read the study guide for the latest skill list.
+- **Status note:** Confirm whether the exam is currently in beta or generally available directly on the official exam page at scheduling time.
 
 ---
 
@@ -36,7 +37,7 @@ Microsoft describes this certification as suited for people starting with **AI s
 The exam assesses **conceptual knowledge** and **practical understanding** for AI on Azure, including:
 
 - **Core cloud concepts** — e.g., services and how resources are deployed.
-- **Microsoft Foundry** — deploying models and implementing **single-agent** solutions.
+- **Azure AI Foundry** — deploying models and implementing **single-agent** solutions.
 - **Application structure** — how client applications are built and how **AI models and services** are consumed.
 - **Python examples** — understanding code that calls AI models and services (reading and reasoning about samples, not necessarily writing production code from scratch).
 
@@ -60,7 +61,7 @@ These percentages appear on the exam page; use the **study guide** for the exact
 
 1. **Study guide first** — Download or open the [AI-901 study guide](https://aka.ms/AI901-StudyGuide) and turn each objective into a checklist.
 2. **Structured course** — Follow [AI-901T00](https://learn.microsoft.com/en-us/training/courses/ai-901t00) or equivalent Learn paths linked from the study guide.
-3. **Foundry and consumption** — Spend extra time on **Microsoft Foundry**, **model deployment**, **agents (single-agent)**, and how **apps call** models and services (this matches the larger domain weight).
+3. **Foundry and consumption** — Spend extra time on **Azure AI Foundry**, **model deployment**, **agents (single-agent)**, and how **apps call** models and services (this matches the larger domain weight).
 4. **Responsible AI** — Ethics, fairness, transparency, privacy, and security in **scenario-style** questions (matches the “concepts and responsibilities” domain).
 5. **Python literacy** — Practice reading short samples: client setup, invoking a model, handling responses.
 6. **Practice assessment** — When Microsoft publishes an official practice assessment for this exam, use it to find gaps. While the exam is in **beta**, the practice assessment may be **delayed**; the exam page notes practice assessments often appear within about **eight weeks** after the exam exits beta and becomes generally available (confirm current availability on the exam page).
@@ -92,3 +93,4 @@ These percentages appear on the exam page; use the **study guide** for the exact
 ## Document history
 
 - Compiled from the [AI-901 exam page](https://learn.microsoft.com/en-us/credentials/certifications/exams/ai-901/) and related Microsoft Learn links. Update this file when Microsoft publishes exam or study-guide changes.
+- Last reviewed: 2026-04-23.
